@@ -20,10 +20,11 @@ def package_installer(list):
     install_packages = " ".join(finallist)  # Join the list into a space-separated string
 
     # Run the pacman command
-    if list == 'pacman_packages.txt':
+    if list == 'pacman_packages.txt' or 'blackarch_packages.txt':
         package_command = "sudo pacman -S "
     if list == 'aur_packages.txt':
         package_command = "yay -S "
+
     os.system(package_command + install_packages)
 blackarch_installer()
-package_installer('pacman_packages.txt')#
+package_installer('pacman_packages.txt')
