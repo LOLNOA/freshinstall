@@ -5,5 +5,5 @@ sudo gh auth login
 # Setting Github email
 sudo git config --global user.email LOLNOA@github.com
 # Setting Github name
-sudo git config --globa user.name LOLNOA
+sudo git config --global user.name LOLNOA
 
