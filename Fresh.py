@@ -19,10 +19,15 @@ def package_installer(list):
         package_command = "sudo pacman -S "
     if list == 'aur_packages.txt':
         package_command = "yay -S "
+    if list == 'settings.txt':
+        package_command = install_packages
+    
     if not finallist:
         print("PACKAGE LIST EMPTY!")
-
-    os.system(package_command + install_packages)
+    if package_command == install_packages:
+        os.system(package_command)
+    else:
+        os.system(package_command + install_packages)
 print("""
 ##################################
       INSTALLING BLACKARCH KEYRING
@@ -47,3 +52,9 @@ print("""
 ###################################
 """)
 package_installer('blackarch_packages.txt')
+print("""
+########################
+APPPLYING OTHER COMMANDS 
+########################
+""")
+package_installer('settings.txt')
