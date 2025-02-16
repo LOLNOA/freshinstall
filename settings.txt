@@ -1,2 +1,9 @@
 # Setting gnome to allow context menu on right click
-gsettings set org.gnome.desktop.peripherals.touchpad click-method 'areas'
+sudo gsettings set org.gnome.desktop.peripherals.touchpad click-method 'areas'
+# Running Github auth 
+sudo gh auth login
+# Setting Github email
+sudo git config --global user.email LOLNOA@github.com
+# Setting Github name
+sudo git config --globa user.name LOLNOA
+
