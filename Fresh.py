@@ -3,6 +3,8 @@
 Personal fresh install setup script
 """
 import os
+
+
 def blackarch_installer():
     os.system("curl -O https://blackarch.org/strap.sh")
     os.system("sudo bash strap.sh")
@@ -14,20 +16,20 @@ def package_installer(list):
             line = line.strip()  
             if line and '#' not in line:  
                 finallist.append(line)
-    install_packages = " ".join(finallist) 
-    if list == 'pacman_packages.txt' or 'blackarch_packages.txt':
-        package_command = "sudo pacman -S "
-    if list == 'aur_packages.txt':
-        package_command = "yay -S "
+    if list != 'settings.txt':
+        install_packages = " ".join(finallist) 
+        if list == 'pacman_packages.txt' or 'blackarch_packages.txt':
+            package_command = "sudo pacman -S "
+        if list == 'aur_packages.txt':
+            package_command = "yay -S "
+        if not finallist:
+            print("PACKAGE LIST EMPTY!")
+        else:
+            os.system(package_command + install_packages)
     if list == 'settings.txt':
-        package_command = install_packages
-    
-    if not finallist:
-        print("PACKAGE LIST EMPTY!")
-    if package_command == install_packages:
-        os.system(package_command)
-    else:
-        os.system(package_command + install_packages)
+        for command in finallist:
+            os.system("sudo " + command)
+
 print("""
 ##################################
       INSTALLING BLACKARCH KEYRING
